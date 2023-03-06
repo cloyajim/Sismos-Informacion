@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/common_pading_default">
+
+    <TextView
+        android:id="@+id/tvMagText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="4.5"
+        android:textAppearance="?attr/textAppearanceHeadline5"/>
+
+    <ImageView
+        android:id="@+id/imArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_arrow_next"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_common_default"
+        android:layout_marginEnd="@dimen/margin_common_default"
+        tools:text="Mexico Cdmx"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:layout_toStartOf="@id/imArrow"
+        android:layout_toEndOf="@id/tvMagText" />
+
+
+</RelativeLayout>

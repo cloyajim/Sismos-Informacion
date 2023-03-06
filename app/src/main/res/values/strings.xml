@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Detector Sismos</string>
+    <string name="eq_text_empty">No hay sismos ahora</string>
+</resources>
