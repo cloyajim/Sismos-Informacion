@@ -1,13 +1,10 @@
 package com.example.detectorsismos
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import org.json.JSONArray
-import org.json.JSONObject
 
 class MainViewModel: ViewModel() {
 
@@ -25,36 +22,33 @@ class MainViewModel: ViewModel() {
 
     private suspend fun fetchEarthquakes(): MutableList<Earthquake> {
         return withContext(Dispatchers.IO) {
-            val eqListString = service.getLastHourEarthquake()
-            val eqList = parceEqResult(eqListString)
+            val eqJsonResponse = service.getLastHourEarthquake()
+            val eqList = parceEqResult(eqJsonResponse)
 
             eqList
         }
     }
 
-    private fun parceEqResult(eqListString: String): MutableList<Earthquake> {
-        val eqJsonObject = JSONObject(eqListString)
-        val featuresJsonArray = eqJsonObject.getJSONArray("features")
-
+    private fun parceEqResult(eqJsonResponse: EqJsonResponse): MutableList<Earthquake> {
         val eqList = mutableListOf<Earthquake>()
+        val featureList = eqJsonResponse.features
 
-        for (i in 0 until featuresJsonArray.length()) {
-            val featuresJSONObject = featuresJsonArray[i] as JSONObject
-            val id = featuresJSONObject.getString("id")
+        for(features in featureList){
+            val properties = features.properties
+            val id = features.id
 
-            val propertiesJsonObject = featuresJSONObject.getJSONObject("properties")
-            val magnitud = propertiesJsonObject.getDouble("mag")
-            val place = propertiesJsonObject.getString("place")
-            val time = propertiesJsonObject.getLong("time")
+            val mag = properties.mag
+            val place = properties.place
+            val time = properties.time
 
-            val geometryJsonObject = featuresJSONObject.getJSONObject("geometry")
-            val coordinateJsonArray = geometryJsonObject.getJSONArray("coordinates")
-            val longitude = coordinateJsonArray.getDouble(0)
-            val latitude = coordinateJsonArray.getDouble(1)
+            val geometry = features.geometry
+            val latitude = geometry.latitude
+            val longitude = geometry.longitude
 
-            val earthquake = Earthquake(id, place, magnitud, time, longitude, latitude)
-            eqList.add(earthquake)
+            eqList.add(Earthquake(id,place,mag,time,longitude,latitude))
+
         }
+
         return eqList
     }
 }
