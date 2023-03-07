@@ -1,4 +1,4 @@
-package com.example.detectorsismos
+package com.example.detectorsismos.api
 
 class Geometry(val coordinates: Array<Double>) {
     val longitude: Double

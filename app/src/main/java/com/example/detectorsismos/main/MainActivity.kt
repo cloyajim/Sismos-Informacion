@@ -1,9 +1,7 @@
-package com.example.detectorsismos
+package com.example.detectorsismos.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.activity.ComponentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager

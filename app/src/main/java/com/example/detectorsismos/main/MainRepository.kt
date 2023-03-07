@@ -1,5 +1,8 @@
-package com.example.detectorsismos
+package com.example.detectorsismos.main
 
+import com.example.detectorsismos.Earthquake
+import com.example.detectorsismos.api.EqJsonResponse
+import com.example.detectorsismos.api.service
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

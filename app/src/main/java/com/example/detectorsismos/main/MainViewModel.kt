@@ -1,9 +1,10 @@
-package com.example.detectorsismos
+package com.example.detectorsismos.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.detectorsismos.Earthquake
 import kotlinx.coroutines.*
 
 class MainViewModel: ViewModel() {

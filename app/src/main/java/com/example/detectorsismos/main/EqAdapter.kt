@@ -1,4 +1,4 @@
-package com.example.detectorsismos
+package com.example.detectorsismos.main
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.detectorsismos.Earthquake
+import com.example.detectorsismos.R
 import com.example.detectorsismos.databinding.ListItemBinding
 
 
